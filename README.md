@@ -10,7 +10,7 @@ npm init -y
 4) Ignore node_modules directory with .gitignore containing the line :  
 node_modules/
 
-5) Install webpack and its CLI for development (devDependencies) with : 
+5) Install webpack and its CLI for development (devDependencies) to generate node_modules : 
 npm i --save-dev webpack webpack-cli
 
 6) At the root, create webpack.config.js containing :
