@@ -42,6 +42,7 @@
     "colorette": "^2.0.16",
     "commander": "^2.20.3",
     "cross-spawn": "^7.0.3",
+    "dayjs": "^1.10.7",
     "electron-to-chromium": "^1.4.51",
     "enhanced-resolve": "^5.8.3",
     "envinfo": "^7.8.1",

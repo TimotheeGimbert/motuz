@@ -1,13 +1,16 @@
 import '../style/index.scss';
-import { msgObject, logMessage } from './file1';
-import tool from './file2';
-
 const testBabel = () => {
   console.log('Babel should transform this arrow function for ES5 in /dist bundled js file');
 };
 console.log('Hello');
 testBabel();
 
+import { msgObject, logMessage } from './file1';
 logMessage(msgObject.message);
 
+import tool from './file2';
 tool.logMessage(tool.msgObject.message);
+
+import dayjs from 'dayjs';
+console.log(dayjs().format('MMMM DD YYYY')); 
+console.log(dayjs().subtract(10, 'days').format('DD/MM/YYYY'));
