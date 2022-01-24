@@ -145,3 +145,13 @@ module.exports = (env) => {
   const Dotenv = require('dotenv-webpack');
 28) Finaly add it into plugins section :
  new Dotenv(),
+
+
+29) Install bootstrap via npm
+  npm install bootstrap
+30) import js for boostrap at entry point index.js with : import 'bootstrap';
+31) Add peerDependencies for bootstrap, adding them in packacge.json with : npm install --save jquery @popperjs/core (popper.js  instead for old version)
+32) Adds to the beginning of main scss file index.scss :
+    @import '~bootstrap/scss/bootstrap';
+33) Create a file _custom.scss in src to overide scss of bootstrap, and adds before the import bootstrap :
+    @import './custom';

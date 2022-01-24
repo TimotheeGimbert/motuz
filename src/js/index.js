@@ -1,4 +1,6 @@
 import '../style/index.scss';
+import 'bootstrap';
+
 const testBabel = () => {
   console.log('Babel should transform this arrow function for ES5 in /dist bundled js file');
 };
