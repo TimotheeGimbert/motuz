@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("console.log('Hello');\n\n//# sourceURL=webpack://webpackstarter/./src/index.js?");
+eval("console.log('Hello');\n\nvar testBabel = function testBabel() {\n  console.log('Babel should transform this arrow function for ES5 in /dist bundled js file');\n};\n\n//# sourceURL=webpack://webpackstarter/./src/index.js?");
 
 /***/ })
 

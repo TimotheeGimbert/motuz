@@ -33,3 +33,27 @@ module.exports = {
   },
 
 8) In package.json, removes line "main": "index.js"
+
+9) Adds module rules, in webpackconfig below output
+module: {
+    rules: [
+      
+    ],
+  },
+
+10) Install Babel : 
+npm i -D babel-loader @babel/core @babel/preset-env
+
+11) Adds rules for Babel:
+rules: [
+    {
+      test: /\.js$/,
+      exclude: /(node_modules)/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env'],
+        },
+      },
+    },
+  ],
