@@ -647,6 +647,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/js/domManip.js":
+/*!****************************!*\
+  !*** ./src/js/domManip.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"buttonRemover\": () => (/* binding */ buttonRemover)\n/* harmony export */ });\nvar buttonRemover = function buttonRemover() {\n  var btn = document.getElementsByTagName('button')[0];\n  btn.addEventListener('click', function () {\n    btn.style.display = 'none';\n  });\n};\n\n\n\n//# sourceURL=webpack://webpackstarter/./src/js/domManip.js?");
+
+/***/ }),
+
 /***/ "./src/js/file1.js":
 /*!*************************!*\
   !*** ./src/js/file1.js ***!
@@ -676,7 +687,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../style/index.scss */ \"./src/style/index.scss\");\n/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap */ \"./node_modules/bootstrap/dist/js/bootstrap.esm.js\");\n/* harmony import */ var _file1__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./file1 */ \"./src/js/file1.js\");\n/* harmony import */ var _file2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./file2 */ \"./src/js/file2.js\");\n/* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! dayjs */ \"./node_modules/dayjs/dayjs.min.js\");\n/* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(dayjs__WEBPACK_IMPORTED_MODULE_4__);\n\n\n\nvar testBabel = function testBabel() {\n  console.log('Babel should transform this arrow function for ES5 in /dist bundled js file');\n};\n\nconsole.log('Hello');\ntestBabel();\n\n(0,_file1__WEBPACK_IMPORTED_MODULE_2__.logMessage)(_file1__WEBPACK_IMPORTED_MODULE_2__.msgObject.message);\n\n_file2__WEBPACK_IMPORTED_MODULE_3__[\"default\"].logMessage(_file2__WEBPACK_IMPORTED_MODULE_3__[\"default\"].msgObject.message);\n\nconsole.log(dayjs__WEBPACK_IMPORTED_MODULE_4___default()().format('MMMM DD YYYY'));\nconsole.log(dayjs__WEBPACK_IMPORTED_MODULE_4___default()().subtract(10, 'days').format('DD/MM/YYYY'));\nconsole.log(\" >>>>>>>>>>>>>>>>< DOTENV .env secret variable (DONT PUSH IT, PLACE INTO .gitignore) : \", \"YOUR_SECRET_VALUE_HERE\");\n\n//# sourceURL=webpack://webpackstarter/./src/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../style/index.scss */ \"./src/style/index.scss\");\n/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap */ \"./node_modules/bootstrap/dist/js/bootstrap.esm.js\");\n/* harmony import */ var _file1__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./file1 */ \"./src/js/file1.js\");\n/* harmony import */ var _file2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./file2 */ \"./src/js/file2.js\");\n/* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! dayjs */ \"./node_modules/dayjs/dayjs.min.js\");\n/* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(dayjs__WEBPACK_IMPORTED_MODULE_4__);\n/* harmony import */ var _domManip__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./domManip */ \"./src/js/domManip.js\");\n\n\n\nvar testBabel = function testBabel() {\n  console.log('Babel should transform this arrow function for ES5 in /dist bundled js file');\n};\n\nconsole.log('Hello');\ntestBabel();\n\n(0,_file1__WEBPACK_IMPORTED_MODULE_2__.logMessage)(_file1__WEBPACK_IMPORTED_MODULE_2__.msgObject.message);\n\n_file2__WEBPACK_IMPORTED_MODULE_3__[\"default\"].logMessage(_file2__WEBPACK_IMPORTED_MODULE_3__[\"default\"].msgObject.message);\n\nconsole.log(dayjs__WEBPACK_IMPORTED_MODULE_4___default()().format('MMMM DD YYYY'));\nconsole.log(dayjs__WEBPACK_IMPORTED_MODULE_4___default()().subtract(10, 'days').format('DD/MM/YYYY'));\nconsole.log(\" >>>>>>>>>>>>>>>>< DOTENV .env secret variable (DONT PUSH IT, PLACE INTO .gitignore) : \", \"YOUR_SECRET_VALUE_HERE\");\n\n(0,_domManip__WEBPACK_IMPORTED_MODULE_5__.buttonRemover)();\n\n//# sourceURL=webpack://webpackstarter/./src/js/index.js?");
 
 /***/ }),
 
