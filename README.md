@@ -94,3 +94,21 @@ if (process.env.NODE_ENV === 'production') {
     ],
   };
 }
+
+17) Install MiniCSSExtract PLUG-IN  (to bundle every css into one)
+$ npm i -D mini-css-extract-plugin
+
+18) Import the plug-in in wabpack config : 
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+19) Add plug-in after module in webpack config
+plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'bundle.css',
+    }),
+  ],
+
+20 ) Edit sass scss rules in webpack config to use the plug-in (first row to be used at the end)
+{
+  loader: MiniCssExtractPlugin.loader,
+},
