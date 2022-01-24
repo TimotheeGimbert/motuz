@@ -112,3 +112,11 @@ plugins: [
 {
   loader: MiniCssExtractPlugin.loader,
 },
+
+21) Adds rules for images in webpack config
+{
+  test: /\.(png|jpe?g|gif|svg)$/i,
+  type: 'asset/resource',
+},
+
+22) 

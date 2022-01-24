@@ -1,5 +1,18 @@
 $color-red: rgb(255, 20, 20);
 
+@font-face {
+  font-family: 'Augusta';
+  src: url('../assets/fonts/Augusta.ttf');
+}
+
+
+body {
+  background-image: url('../assets/images/food1.jpg');
+  background-size: 600px;
+}
+
+
 p {
   color: $color-red;
+  font-family: 'Augusta';
 }
