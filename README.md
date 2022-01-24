@@ -119,4 +119,10 @@ plugins: [
   type: 'asset/resource',
 },
 
-22) 
+22) Webpack auto compile when changes live : adds a the end of webpack.config
+module.exports = {
+  //...
+  watch: true,
+};
+
+ti
