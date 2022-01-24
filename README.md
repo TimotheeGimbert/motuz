@@ -125,4 +125,9 @@ module.exports = {
   watch: true,
 };
 
-ti
+
+23) Install desired NPM modules (example dayjs) with
+npm i moduleName
+24) Then import into .js file with : import moduleName from 'moduleName';
+
+25) Environment variables into package.json, for example into the script 'build', add --env.NODE_ENV=tonEnvironnement
