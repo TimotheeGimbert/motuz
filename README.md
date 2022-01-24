@@ -130,4 +130,11 @@ module.exports = {
 npm i moduleName
 24) Then import into .js file with : import moduleName from 'moduleName';
 
-25) Environment variables into package.json, for example into the script 'build', add --env.NODE_ENV=tonEnvironnement
+25) Environment variables into package.json, for example into the script 'build', add --env myVar=development
+Also, modify webpackconfig to make module.export as a function with attribute env 
+module.exports = (env) => {
+  console.log("myVar:", env.myVar);
+  return {
+        previous content of module.exports
+  }
+}
