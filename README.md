@@ -1,8 +1,8 @@
 1) At the root, create index.html and a directory /src containing index.js (/src/style, /src/assets, /src/assets/images, /src/assets/fonts, etc ...)
 
 2) Inside index.html, place : 
-<link rel="stylesheet" href="./dist/bundle.css" /> <!-- In <head> --> 
-<script src="./dist/bundle.js"></script> <!-- Bottom of <body> --> 
+<!-- In <head> -->            <link rel="stylesheet" href="./dist/bundle.css" /> 
+<!-- Bottom of <body> -->     <script src="./dist/bundle.js"></script>  
 
 3) Generate package.json with : 
 npm init -y
