@@ -1,3 +1,5 @@
+This README is not correctly readable as displayed on github >>> open it locally
+
 1) At the root, create index.html and a directory /src containing index.js (/src/style, /src/assets, /src/assets/images, /src/assets/fonts, etc ...)
 
 2) Inside index.html, place : 
@@ -24,3 +26,10 @@ module.exports = {
   },
   mode: 'development',
 };
+
+7) In package.json, add a script that launch webpack with our config file 
+"scripts": {
+    "build": "webpack --config webpack.config.js",
+  },
+
+8) In package.json, removes line "main": "index.js"

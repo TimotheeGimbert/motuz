@@ -2,7 +2,6 @@
   "name": "webpackstarter",
   "version": "1.0.0",
   "description": "1) At the root, create index.html and a directory /src containing index.js (/src/style, /src/assets, /src/assets/images, /src/assets/fonts, etc ...)",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
