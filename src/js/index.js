@@ -14,3 +14,5 @@ tool.logMessage(tool.msgObject.message);
 import dayjs from 'dayjs';
 console.log(dayjs().format('MMMM DD YYYY')); 
 console.log(dayjs().subtract(10, 'days').format('DD/MM/YYYY'));
+
+console.log(" >>>>>>>>>>>>>>>>< DOTENV .env secret variable (DONT PUSH IT, PLACE INTO .gitignore) : ", process.env.mySecretVar);

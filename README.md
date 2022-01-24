@@ -127,7 +127,7 @@ module.exports = {
 
 
 23) Install desired NPM modules (example dayjs) with
-npm i moduleName
+  npm i moduleName ( -D dev env??? )
 24) Then import into .js file with : import moduleName from 'moduleName';
 
 25) Environment variables into package.json, for example into the script 'build', add --env myVar=development
@@ -138,3 +138,10 @@ module.exports = (env) => {
         previous content of module.exports
   }
 }
+
+26) To use a .env file for secret info, install DOTENV :
+  npm i -D dotenv-webpack
+27) Import DOTENV into webpackconfig at the top :
+  const Dotenv = require('dotenv-webpack');
+28) Finaly add it into plugins section :
+ new Dotenv(),
