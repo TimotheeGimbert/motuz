@@ -1,3 +1,5 @@
+import './style/index.scss';
+
 console.log('Hello');
 
 const testBabel = () => {

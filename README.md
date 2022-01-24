@@ -57,3 +57,40 @@ rules: [
       },
     },
   ],
+
+12) Create index.scss dans src/style/
+
+13) import this file in src/index.js :
+import './style/index.scss';
+
+14) install sass :
+npm i -D sass sass-loader postcss-loader css-loader
+
+15) Create rule in webpackconfig 
+{
+  test: /\.(sa|sc|c)ss$/,
+  use: [
+    {
+      loader: 'css-loader',
+    },
+    {
+      loader: 'postcss-loader',
+    },
+    {
+      loader: 'sass-loader',
+      options: {
+        implementation: require('sass'),
+      },
+    },
+  ],
+},
+
+16) To use postCSS (in production mode), add a file postcss.config.js at the root containing :
+if (process.env.NODE_ENV === 'production') {
+  module.exports = {
+    plugins: [
+      require('autoprefixer'),
+      require('cssnano'),
+    ],
+  };
+}
