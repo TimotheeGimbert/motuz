@@ -22,10 +22,11 @@ const game = (wordToFind) => {
         lettersFound[index] = word[index];
       }
       else if (wordToFind.includes(word[index])) box.classList.add('misplaced');
+      else if (box.classList.contains('placed')) box.classList.remove('placed');
     });
   }
 
-  const prepareNewLine = () => {
+  const prepareNextLine = () => {
     attemptsLeft--;
     let lineIndex = totalAttempts - attemptsLeft;
     const line = document.querySelectorAll('.line')[lineIndex];
@@ -37,15 +38,21 @@ const game = (wordToFind) => {
     });
   }
   
+  const handleInput = () => {
+    const input = document.querySelector('input').value;
+    const wordProposed = input.toUpperCase();
+    displayInput(wordProposed);
+    prepareNextLine();
+  }
 
-  buildBoard();
   let lettersFound = [...Array(nbLetters)];
-
-  const wordProposed = 'nageurs'.toUpperCase();
-  displayInput(wordProposed);
-  prepareNewLine();
+  buildBoard();
+  
+  const proposeButton = document.getElementsByTagName('button')[0];
+  proposeButton.addEventListener('click', () => handleInput() );
 
 }
+
 
 const generatedWordToFind = 'nolwenn'.toUpperCase();
 const nbLetters = generatedWordToFind.length;
