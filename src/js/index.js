@@ -4,6 +4,7 @@ const app = () => {
 
   let wordToFind;
   let maxAttempts;
+  let lettersFound;
   let round = 0;
 
   const prepareGame = () => {
@@ -21,68 +22,13 @@ const app = () => {
       });
     }
 
-    wordToFind = generateWord();        // calls API to get a random word to find
-    maxAttempts = wordToFind.length-1;  // calculates the total possible attempts depending on the length of the word to find
-    buildBoard(wordToFind.length);      // build the adequate numbers of rows and boxes for the board
+    wordToFind = generateWord();                  // calls API to get a random word to find
+    lettersFound = [...Array(wordToFind.length)]; // sets the empty array of letters found by the player
+    maxAttempts = wordToFind.length-1;            // calculates the total possible attempts depending on the length of the word to find
+    buildBoard(wordToFind.length);                // build the adequate numbers of rows and boxes for the board
   }
 
   const game = () => {
-
-    const attempt = (guess) => {
-
-      const displayAnswer = () => {
-        const boxes = document.querySelectorAll('.line')[round].childNodes;
-
-        boxes.forEach( (box, i) => {
-          box.innerHTML = wordToFind[i];
-          if (!box.classList.contains('placed')) box.classList.add('wrong');
-        });
-      }
-
-      const displayGuess = () => {
-        const boxes = document.querySelectorAll('.line')[round].childNodes;
-
-        boxes.forEach( (box, i) => {
-          if (guess[i] === wordToFind[i]) {
-            box.innerHTML = wordToFind[i];
-            box.classList.add('placed');
-          }
-          else if (box.classList.contains('placed')) {
-            box.innerHTML = guess[i];
-            box.classList.remove('placed');
-          }
-          else box.innerHTML = guess[i];
-        });
-      }
-
-      const prepareNextLine = () => {
-        const boxes = document.querySelectorAll('.line')[round].childNodes;
-        const nextBoxes = document.querySelectorAll('.line')[round+1].childNodes;
-        boxes.forEach( (box, i) => {
-          if (guess[i] === wordToFind[i]) {
-            nextBoxes[i].innerHTML = wordToFind[i];
-            nextBoxes[i].classList.add('placed');
-          }
-        });
-
-      }
-
-      if (guess === wordToFind) {
-        console.log('winner');
-        displayGuess();
-        return;
-      }
-      else if (round === maxAttempts - 1) {
-        console.log('looser');
-        displayAnswer();
-        return;
-      }
-      else {
-        prepareNextLine();
-        displayGuess();
-        round++;
-      }
-    }
 
     const handleInput = () => {
 
@@ -95,11 +41,78 @@ const app = () => {
       verifyInput(input) ? attempt(input.toUpperCase()) : console.log('wrong') ;
     }
 
-    if (round < maxAttempts) {
-      const proposeButton = document.getElementsByTagName('button')[0];
-      proposeButton.addEventListener('click', () => handleInput() );
+    const attempt = (guess) => {
+
+      const displayGuess = () => {
+        const boxes = document.querySelectorAll('.line')[round].childNodes;
+        boxes.forEach( (box, i) => {
+          box.innerHTML = guess[i];
+          if (guess[i] === wordToFind[i]) {
+            box.classList.add('placed');
+            lettersFound[i] = wordToFind[i];
+          }
+          else if (box.classList.contains('placed')) box.classList.remove('placed');
+        });
+      }
+
+      const prepareNextRound = () => {
+
+        const colorizeCurrentMisplaced = () => {
+          const boxes = document.querySelectorAll('.line')[round].childNodes;
+          boxes.forEach( (box, i) => {
+            if (box.classList.contains('placed')) return;
+            else if (wordToFind.includes(guess[i])) {
+              const totalIterations = wordToFind.split(guess[i]).length - 1;
+              const foundIterations = lettersFound.filter( (e) => e === guess[i] ).length;
+
+              if (foundIterations < totalIterations) {
+                box.classList.add('misplaced');
+              }
+            }
+          });
+        }
+
+        const displayNextLine = () => {
+          const nextBoxes = document.querySelectorAll('.line')[round+1].childNodes;
+          nextBoxes.forEach( (box, i) => {
+            if (lettersFound[i] != undefined) {
+              nextBoxes[i].innerHTML = wordToFind[i];
+              nextBoxes[i].classList.add('placed');
+            }
+          });
+        }
+
+        colorizeCurrentMisplaced();
+        displayNextLine();
+      }
+
+      const showAnswer = () => {
+        const boxes = document.querySelectorAll('.line')[round].childNodes;
+        boxes.forEach( (box, i) => {
+          box.innerHTML = wordToFind[i];
+          if (!box.classList.contains('placed')) box.classList.add('wrong');
+        });
+      }
+
+      if (guess === wordToFind) {
+        console.log('winner');
+        displayGuess();
+        return;
+      }
+      else if (round === maxAttempts - 1) {
+        console.log('looser');
+        showAnswer();
+        return;
+      }
+      else {
+        displayGuess();
+        prepareNextRound();
+        round ++;
+      }
     }
-    else return;
+
+    const guessButton = document.getElementsByTagName('button')[0];
+    guessButton.addEventListener('click', () => handleInput() );
   }
 
   prepareGame();
