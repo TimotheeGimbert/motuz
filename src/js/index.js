@@ -10,7 +10,7 @@ const app = () => {
   const prepareGame = () => {
 
     const generateWord = () => {
-      return 'nolwenn'.toUpperCase();
+      return 'timothee'.toUpperCase();
     }
 
     const buildBoard = (nbLetters) => {
@@ -33,7 +33,8 @@ const app = () => {
     const handleInput = () => {
 
       const verifyInput = (input) => {
-        const regex = /^([a-z]){7}$/i;
+        const regexpString = `(^([a-z]){${wordToFind.length}}$)`;
+        var regex = new RegExp(regexpString, 'i');
         return regex.test(input) ? true : false;
       }
 
