@@ -64,3 +64,6 @@ body {
 .line .box.misplaced {
   background-color: orange;
 }
+.line .box.wrong {
+  background-color: red;
+}

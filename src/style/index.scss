@@ -68,5 +68,8 @@ body {
     &.misplaced {
       background-color: orange;
     }
+    &.wrong {
+      background-color: red;
+    }
   }
 }
