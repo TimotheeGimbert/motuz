@@ -3,6 +3,8 @@ import '../style/index.scss';
 
 const game = (wordToFind) => {
 
+  let lettersFound = [...Array(nbLetters)];
+
   const buildBoard = () => {
     const board = document.querySelector('.board');
     [...Array(attemptsLeft)].map( () => board.innerHTML += `<div class="line"></div>` );
@@ -10,47 +12,52 @@ const game = (wordToFind) => {
     lines.map( (line) => {
       [...Array(nbLetters)].map( () => line.innerHTML += `<div class="box"></div>` );
     });
-  }
-  
-  const displayInput = (word) => {
-    const lineIndex = totalAttempts - attemptsLeft;
-    const line = document.querySelectorAll('.line')[lineIndex];
-    line.childNodes.forEach( (box, index) => {
-      box.innerHTML = word[index];
-      if (word[index] === wordToFind[index]) {
-        box.classList.add('placed');
-        lettersFound[index] = word[index];
-      }
-      else if (wordToFind.includes(word[index])) box.classList.add('misplaced');
-      else if (box.classList.contains('placed')) box.classList.remove('placed');
-    });
+    const proposeButton = document.getElementsByTagName('button')[0];
+    proposeButton.addEventListener('click', () => handleInput() );
   }
 
-  const prepareNextLine = () => {
-    attemptsLeft--;
-    let lineIndex = totalAttempts - attemptsLeft;
-    const line = document.querySelectorAll('.line')[lineIndex];
-    lettersFound.forEach( (letter, index) => {
-      if (letter != undefined) {
-        line.childNodes[index].classList.add('placed');
-        line.childNodes[index].innerHTML = letter;
-      }
-    });
-  }
-  
   const handleInput = () => {
+    const verifyInput = (input) => {
+      const regex = /^([a-z]){7}$/i;
+      return regex.test(input) ? true : false;
+    }
     const input = document.querySelector('input').value;
-    const wordProposed = input.toUpperCase();
-    displayInput(wordProposed);
+    verifyInput(input) ? round(input) : null ;
+  }
+
+  const round = (input) => {
+
+    const displayInput = (word) => {
+      const lineIndex = totalAttempts - attemptsLeft;
+      const line = document.querySelectorAll('.line')[lineIndex];
+      line.childNodes.forEach( (box, index) => {
+        box.innerHTML = word[index];
+        if (word[index] === wordToFind[index]) {
+          box.classList.add('placed');
+          lettersFound[index] = word[index];
+        }
+        else if (wordToFind.includes(word[index])) box.classList.add('misplaced');
+        else if (box.classList.contains('placed')) box.classList.remove('placed');
+      });
+    }
+  
+    const prepareNextLine = () => {
+      attemptsLeft--;
+      let lineIndex = totalAttempts - attemptsLeft;
+      const line = document.querySelectorAll('.line')[lineIndex];
+      lettersFound.forEach( (letter, index) => {
+        if (letter != undefined) {
+          line.childNodes[index].classList.add('placed');
+          line.childNodes[index].innerHTML = letter;
+        }
+      });
+    }
+
+    displayInput(input.toUpperCase());
     prepareNextLine();
   }
-
-  let lettersFound = [...Array(nbLetters)];
-  buildBoard();
   
-  const proposeButton = document.getElementsByTagName('button')[0];
-  proposeButton.addEventListener('click', () => handleInput() );
-
+  buildBoard();
 }
 
 
