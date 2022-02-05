@@ -51,21 +51,29 @@ const app = () => {
             box.classList.add('placed');
             lettersFound[i] = wordToFind[i];
           }
-          else if (box.classList.contains('placed')) box.classList.remove('placed');
+          else if (box.classList.contains('placed')) {
+            box.classList.remove('placed');
+            box.classList.add('wrong');
+          }
         });
       }
 
       const prepareNextRound = () => {
 
         const colorizeCurrentMisplaced = () => {
+
           const boxes = document.querySelectorAll('.line')[round].childNodes;
           boxes.forEach( (box, i) => {
             if (box.classList.contains('placed')) return;
             else if (wordToFind.includes(guess[i])) {
-              const totalIterations = wordToFind.split(guess[i]).length - 1;
-              const foundIterations = lettersFound.filter( (e) => e === guess[i] ).length;
-
-              if (foundIterations < totalIterations) {
+              const neededOccurences = wordToFind.split('').filter( (e) => e === guess[i] ).length;
+              const wellPlacedOccurences = lettersFound.filter( (e) => e === guess[i] ).length;
+              let misplacedColorizedOccurences = 0;
+              boxes.forEach( (box) => {
+                if (box.innerHTML === guess[i] && box.classList.contains('misplaced')) misplacedColorizedOccurences ++;
+              });
+              const occurencesToColorize = neededOccurences - wellPlacedOccurences - misplacedColorizedOccurences;
+              if (occurencesToColorize > 0) {
                 box.classList.add('misplaced');
               }
             }
@@ -76,8 +84,8 @@ const app = () => {
           const nextBoxes = document.querySelectorAll('.line')[round+1].childNodes;
           nextBoxes.forEach( (box, i) => {
             if (lettersFound[i] != undefined) {
-              nextBoxes[i].innerHTML = wordToFind[i];
-              nextBoxes[i].classList.add('placed');
+              box.innerHTML = wordToFind[i];
+              box.classList.add('placed');
             }
           });
         }
