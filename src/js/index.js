@@ -69,6 +69,7 @@ const app = () => {
 
       if (guess === wordToFind) {
         console.log('winner');
+        displayGuess();
         return;
       }
       else if (round === maxAttempts - 1) {
