@@ -1,23 +1,33 @@
 import '../style/index.scss';
-import 'bootstrap';
 
-const testBabel = () => {
-  console.log('Babel should transform this arrow function for ES5 in /dist bundled js file');
-};
-console.log('Hello');
-testBabel();
+const nbLetters = 7;
+const nbLines = nbLetters-1;
 
-import { msgObject, logMessage } from './file1';
-logMessage(msgObject.message);
+const board = document.querySelector('.board');
+[...Array(nbLines)].map( () => board.innerHTML += `<div class="line"></div>` );
 
-import tool from './file2';
-tool.logMessage(tool.msgObject.message);
+const lines = [...document.querySelectorAll('.line')];
+lines.map( (line) => {
+  [...Array(nbLetters)].map( () => line.innerHTML += `<div class="box"></div>` );
+});
 
-import dayjs from 'dayjs';
-console.log(dayjs().format('MMMM DD YYYY')); 
-console.log(dayjs().subtract(10, 'days').format('DD/MM/YYYY'));
+const game = () => {
+  const wordToFind = 'nolwenn';
+  const wordProposed = 'nageurs';
 
-console.log(" >>>>>>>>>>>>>>>>< DOTENV .env secret variable (DONT PUSH IT, PLACE INTO .gitignore) : ", process.env.mySecretVar);
+  let placedLetters = [...Array(nbLetters)];
 
-import { buttonRemover } from './domManip';
-buttonRemover();
+  lines[0].childNodes.forEach( (box, index) => {
+    box.innerHTML = wordProposed[index].toUpperCase();
+    if (wordProposed[index].toUpperCase() === wordToFind[index].toUpperCase()) {
+      box.classList.add('placed');
+      placedLetters[index] = wordProposed[index];
+      console.log(placedLetters);
+    }
+    else if (wordToFind.toUpperCase().includes(wordProposed[index].toUpperCase())) {
+      box.classList.add('misplaced');
+    }
+  });
+}
+
+game();
