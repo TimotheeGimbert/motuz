@@ -3,7 +3,7 @@ import '../style/index.scss';
 const main = () => {
 
   //const words = ['marmotte', 'potiron', 'citron', 'chaton', 'marmitte', 'parasol', 'balade', 'mousson', 'parquet', 'belgique', 'chausson', 'marbre', 'pizzas', 'beignet', 'bonnet', 'capuche', 'araignee', 'populaire', 'tonneau'];
-  const words = ['pizza', 'pizza'];
+  const words = ['potirons', 'potirons'];
   let status;
 
   const game = () => {
@@ -31,7 +31,7 @@ const main = () => {
       }
       
       wordToFind = generateWord();                 
-      maxAttempts = wordToFind.length;  
+      maxAttempts = wordToFind.length-1;  
       lettersFound = [...Array(wordToFind.length)];  
       round = 0;
       status = 'playing';       

@@ -6,6 +6,7 @@
 }
 
 body {
+  height: 100vh;
   margin: 0;
   padding: 0;
   background-image: url("../assets/images/paper.jpg");
@@ -13,83 +14,103 @@ body {
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
-}
 
-.app {
-  width: 100vw;
-  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  
-  section {
-    input {
-      width: 50%;
-      margin-bottom: 11px;
-      border-radius: 11px;
-      padding: 6px;
-      margin-right: 11px;
-    }
-  }
-  
+  justify-content: space-between;
 
-  button {
-    margin: 33px 0;
-    padding: 11px 44px;
-    border-radius: 30px;
+  header {
     background-color: $dark-opac;
     color: white;
-    border: 3px solid white;
-    &:hover {
-      background-color: white;
-      color: $dark-opac;
-    }
+    font-size: 5vh;
+    padding: 3vh;
+    text-align: center;
+  }
+  
+  main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
 
-#resultModal {
-  display: none;
-}
+.input {
+  margin-bottom: 3vh;
+  display: flex;
 
+  input {
+    padding: 11px 44px;
+    border: 3px solid white;
+    border-radius: 30px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  
+  #submitButton {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
 
 .board {
-  padding: 3%;
-  width: 51vw;
-  background-color: $dark-opac;
+  padding: 6vh;
+  background-color: $light-opac;
   border-radius: 33px;
   display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-evenly;
+  flex-direction: column;
+
+  .line {
+    display: flex;
+    
+    .box {
+      width: 3vw;
+      height: 3vw;
+      margin: 3px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $dark-box;
+      color: white;
+      font-size: 2.2rem;
+      border-radius: 6px;
+  
+      &.placed {
+        background-color: $green-custom;
+      }
+      &.misplaced {
+        background-color: $yellow-custom;
+      }
+      &.wrong {
+        background-color: $red-custom;
+      }
+    }
+  }
 }
   
-.line {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  gap: 3%;
-  margin-bottom: 3%;
-  
-  .box {
-    width: 3vw;
-    height: 3vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.247);
-    color: white;
-    font-size: 2.2rem;
+button {
+  padding: 11px 44px;
+  border-radius: 30px;
+  background-color: #2893f04b;
+  color: white;
+  border: 3px solid white;
+  &:hover {
+    background-color: $blue-custom;
+    cursor: pointer;
+  }
+}
 
-    &.placed {
-      background-color: $green-custom;
-    }
+@media all and (max-width: $breakpoint) {
+  .board {
+    padding: 3vh;
 
-    &.misplaced {
-      background-color: $yellow-custom;
-    }
-    &.wrong {
-      background-color: $red-custom;
+    .line {
+
+      .box {
+        width: 6vw;
+        height: 6vw;
+      }
     }
   }
 }
