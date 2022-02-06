@@ -3,38 +3,39 @@ import '../style/index.scss';
 const main = () => {
 
   const words = ['marmotte', 'potiron', 'citron', 'chaton', 'marmitte', 'parasol', 'balade', 'mousson', 'parquet', 'belgique'];
-  let wordToFind;
-  let maxAttempts;
-  let lettersFound;
-  let round = 0;
-  let status = 'playing';
-
-  const prepareGame = () => {
-
-    const generateWord = () => {
-      const randomIndex = Math.floor(Math.random() * words.length);
-      return words[randomIndex].toUpperCase();
-    }
-
-    const buildBoard = (nbLetters) => {
-      const board = document.querySelector('.board');
-      board.innerHTML = '';
-      [...Array(maxAttempts)].map( () => board.innerHTML += `<div class="line"></div>` );
-      const lines = [...document.querySelectorAll('.line')];
-      lines.map( (line) => {
-        [...Array(nbLetters)].map( () => line.innerHTML += `<div class="box"></div>` );
-      });
-    }
-
-    status = 'playing';
-    round = 0;
-    wordToFind = generateWord();                 
-    lettersFound = [...Array(wordToFind.length)];
-    maxAttempts = wordToFind.length-1;           
-    buildBoard(wordToFind.length);               
-  }
+  let status;
 
   const game = () => {
+
+    let wordToFind;
+    let maxAttempts;
+    let lettersFound;
+    let round;
+
+    const initialize = () => {
+
+      const generateWord = () => {
+        const randomIndex = Math.floor(Math.random() * words.length);
+        return words[randomIndex].toUpperCase();
+      }
+  
+      const buildBoard = (nbLetters) => {
+        const board = document.querySelector('.board');
+        board.innerHTML = '';
+        [...Array(maxAttempts)].map( () => board.innerHTML += `<div class="line"></div>` );
+        const lines = [...document.querySelectorAll('.line')];
+        lines.map( (line) => {
+          [...Array(nbLetters)].map( () => line.innerHTML += `<div class="box"></div>` );
+        });
+      }
+      
+      wordToFind = generateWord();                 
+      maxAttempts = wordToFind.length-1;  
+      lettersFound = [...Array(wordToFind.length)];  
+      round = 0;
+      status = 'playing';       
+      buildBoard(wordToFind.length);               
+    }
 
     const handleInput = () => {
 
@@ -46,6 +47,7 @@ const main = () => {
       }
 
       const input = document.querySelector('input').value;
+      console.log(input);
       verifyInput(input) ? attempt(input.toUpperCase()) : console.log('wrong input') ;
     }
 
@@ -112,14 +114,12 @@ const main = () => {
 
       if (guess === wordToFind) {
         status = 'winner';
-        document.getElementById('submitButton').style.display = 'none';
         displayGuess();
         displayResult(status);
         return;
       }
       else if (round === maxAttempts - 1) {
         status = 'looser';
-        document.getElementById('submitButton').style.display = 'none';
         showAnswer();
         displayResult(status);
         return;
@@ -143,20 +143,15 @@ const main = () => {
       }
     }
 
-    const submitButton = document.getElementById('submitButton');
-    submitButton.removeEventListener('click', handleInput() );
-    submitButton.addEventListener('click', handleInput() );
+    initialize();
+    document.getElementById('submitButton').addEventListener('click', handleInput );
+    document.getElementById('replayButton').addEventListener('click', () => {
+      document.getElementById('resultModal').style.display = 'none';
+      document.getElementById('submitButton').style.display = 'flex';
+      initialize();
+    });
   }
 
-  const replayButton = document.getElementById('replayButton');
-    replayButton.addEventListener('click', () => {
-    document.getElementById('resultModal').style.display = 'none';
-    document.getElementById('submitButton').style.display = 'flex';
-    prepareGame();
-    game();
-  });
-
-  prepareGame();
   game();
 }
 
