@@ -7,6 +7,7 @@
 }
 body {
   height: 100vh;
+  width: 100vw;
   margin: 0;
   padding: 0;
   background-image: url(fe0b5432571e1d50d0ca.jpg);
@@ -19,23 +20,26 @@ body {
   justify-content: space-between;
 }
 body header {
+  padding: 1.5% 0;
   background-color: rgba(14, 12, 12, 0.541);
   color: white;
-  font-size: 5vh;
-  padding: 3vh;
+  font-size: 3em;
   text-align: center;
 }
 body main {
+  margin-top: 1.5%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
 }
 
 .input {
-  margin: 3vh;
+  margin-bottom: 1.5%;
   display: flex;
+  padding: 0.5%;
+  border-radius: 30px;
 }
 .input input {
   max-width: 40vw;
@@ -49,9 +53,12 @@ body main {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
+.input.wrongInput {
+  background-color: #e62d43af;
+}
 
 .board {
-  padding: 6vh;
+  padding: 3vh;
   background-color: rgba(245, 243, 243, 0.925);
   border-radius: 33px;
   display: flex;
@@ -69,7 +76,7 @@ body main {
   align-items: center;
   background-color: rgba(14, 12, 12, 0.767);
   color: white;
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   border-radius: 6px;
 }
 .board .line .box.placed {
@@ -80,6 +87,16 @@ body main {
 }
 .board .line .box.wrong {
   background-color: #e62d43af;
+}
+
+#replayButton {
+  margin-top: 2%;
+  background-color: #fab9053d;
+  transition: transform 500ms;
+}
+#replayButton:hover {
+  transform: scale(1.05);
+  background-color: #fab905a9;
 }
 
 button {
@@ -95,12 +112,17 @@ button:hover {
 }
 
 @media all and (max-width: 1300px) {
+  .input {
+    margin: 11% 0 6% 0;
+  }
+
   .board {
     padding: 2vh;
+    margin-bottom: 11%;
   }
   .board .line .box {
     width: 9vw;
     height: 9vw;
-    font-size: 1.1rem;
+    font-size: 1.4em;
   }
 }

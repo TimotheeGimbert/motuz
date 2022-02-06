@@ -29,27 +29,32 @@ const main = () => {
           [...Array(nbLetters)].map( () => line.innerHTML += `<div class="box"></div>` );
         });
       }
-      
+
+      document.getElementById('submitButton').style.display = 'flex';
+      document.getElementsByTagName('input')[0].value = '';
       wordToFind = generateWord();                 
       maxAttempts = wordToFind.length-1;  
       lettersFound = [...Array(wordToFind.length)];  
       round = 0;
       status = 'playing';       
-      buildBoard(wordToFind.length);               
+      buildBoard(wordToFind.length);   
     }
 
     const handleInput = () => {
 
       const verifyInput = (input) => {
-        console.log(wordToFind.length);
         const regexpString = `(^([a-z]){${wordToFind.length}}$)`;
         var regex = new RegExp(regexpString, 'i');
         return regex.test(input) ? true : false;
       }
 
+      const colorInput = () => {
+        const inputDiv = document.getElementsByClassName('input')[0];
+        inputDiv.classList.add('wrongInput');
+      }
+
       const input = document.querySelector('input').value;
-      console.log(input);
-      verifyInput(input) ? attempt(input.toUpperCase()) : console.log('wrong input') ;
+      verifyInput(input) ? attempt(input.toUpperCase()) : colorInput() ;
     }
 
     const attempt = (guess) => {
@@ -113,16 +118,17 @@ const main = () => {
         });
       }
 
+      const inputDiv = document.getElementsByClassName('input')[0];
+      inputDiv.classList.remove('wrongInput');
+
       if (guess === wordToFind) {
         status = 'winner';
         displayGuess();
-        displayResult(status);
         return;
       }
       else if (round === maxAttempts - 1) {
         status = 'looser';
         showAnswer();
-        displayResult(status);
         return;
       }
       else {
@@ -132,29 +138,17 @@ const main = () => {
       }
     }
     
-    const displayResult = (status) => {
-      const modal = document.getElementById('resultModal');
-      if (status === 'winner') {
-        modal.innerHTML = 'BRAVO ! Vous avez gagné !'        
-        modal.style.display = 'flex';
-      }
-      else {
-        modal.innerHTML = 'Dommage c\'est perdu ...'        
-        modal.style.display = 'flex';
-      }
-    }
-
     initialize();
     document.getElementById('submitButton').addEventListener('click', handleInput );
-    document.getElementById('replayButton').addEventListener('click', () => {
-      document.getElementById('resultModal').style.display = 'none';
-      document.getElementById('submitButton').style.display = 'flex';
-      initialize();
+    document.getElementById('replayButton').addEventListener('click', initialize );
+
+    document.getElementsByTagName('input')[0].addEventListener('keypress', (event) => {
+      if (event.target.value.length >= 8)  event.preventDefault();
     });
+
   }
 
   game();
 }
 
 main();
-

@@ -7,6 +7,7 @@
 
 body {
   height: 100vh;
+  width: 100vw;
   margin: 0;
   padding: 0;
   background-image: url("../assets/images/paper.jpg");
@@ -20,29 +21,31 @@ body {
   justify-content: space-between;
 
   header {
+    padding: 1.5% 0;
     background-color: $dark-opac;
     color: white;
-    font-size: 5vh;
-    padding: 3vh;
+    font-size: 3em;
     text-align: center;
   }
   
   main {
+    margin-top: 1.5%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
   }
 }
 
 .input {
-  margin: 3vh;
+  margin-bottom: 1.5%;
   display: flex;
+  padding: 0.5%;
+  border-radius: 30px;
 
   input {
     max-width: 40vw;
-
     padding: 0.5vw 2vw;
     border: 3px solid white;
     border-radius: 30px;
@@ -54,10 +57,14 @@ body {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
+
+  &.wrongInput {
+    background-color: $red-custom;
+  }
 }
 
 .board {
-  padding: 6vh;
+  padding: 3vh;
   background-color: $light-opac;
   border-radius: 33px;
   display: flex;
@@ -75,7 +82,7 @@ body {
       align-items: center;
       background-color: $dark-box;
       color: white;
-      font-size: 2.2rem;
+      font-size: 1.6rem;
       border-radius: 6px;
   
       &.placed {
@@ -90,6 +97,17 @@ body {
     }
   }
 }
+
+#replayButton {
+  margin-top: 2%;
+  background-color: #fab9053d;;
+  transition: transform 500ms;
+
+  &:hover {
+    transform: scale(1.05); 
+    background-color: #fab905a9;
+  }
+}
   
 button {
   padding: 11px 44px;
@@ -97,6 +115,7 @@ button {
   background-color: #2893f04b;
   color: white;
   border: 3px solid white;
+
   &:hover {
     background-color: $blue-custom;
     cursor: pointer;
@@ -104,15 +123,21 @@ button {
 }
 
 @media all and (max-width: $breakpoint) {
+
+  .input {
+    margin: 11% 0 6% 0;
+  }
+
   .board {
     padding: 2vh;
+    margin-bottom: 11%;
 
     .line {
 
       .box {
         width: 9vw;
         height: 9vw;
-        font-size: 1.1rem;
+        font-size: 1.4em;
 
       }
     }
