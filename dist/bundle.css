@@ -8,24 +8,39 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: azure;
+  background-image: url(fe0b5432571e1d50d0ca.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .app {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(221, 137, 35, 0.507);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.app input {
-  width: 25%;
+.app section input {
+  width: 50%;
   margin-bottom: 11px;
+  border-radius: 11px;
+  padding: 6px;
+  margin-right: 11px;
 }
 .app button {
-  margin: 22px 0;
+  margin: 33px 0;
+  padding: 11px 44px;
+  border-radius: 30px;
+  background-color: rgba(14, 12, 12, 0.541);
+  color: white;
+  border: 3px solid white;
+}
+.app button:hover {
+  background-color: white;
+  color: rgba(14, 12, 12, 0.541);
 }
 
 #resultModal {
@@ -34,10 +49,9 @@ body {
 
 .board {
   padding: 3%;
-  width: 50%;
-  height: 50%;
-  background-color: rgba(124, 59, 6, 0.39);
-  border: 11px solid rgba(63, 29, 2, 0.863);
+  width: 51vw;
+  background-color: rgba(14, 12, 12, 0.541);
+  border-radius: 33px;
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-evenly;
@@ -52,9 +66,8 @@ body {
   margin-bottom: 3%;
 }
 .line .box {
-  width: 100%;
-  height: 100%;
-  border: 1px solid white;
+  width: 3vw;
+  height: 3vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,11 +76,11 @@ body {
   font-size: 2.2rem;
 }
 .line .box.placed {
-  background-color: green;
+  background-color: #5bc216d5;
 }
 .line .box.misplaced {
-  background-color: orange;
+  background-color: #FAB905;
 }
 .line .box.wrong {
-  background-color: red;
+  background-color: #e62d43af;
 }

@@ -5,29 +5,46 @@
   src: url('../assets/fonts/Augusta.ttf');
 }
 
-
 body {
   margin: 0;
   padding: 0;
-  background-color: azure;
+  background-image: url("../assets/images/paper.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .app {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(221, 137, 35, 0.507);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   
-  input {
-    width: 25%;
-    margin-bottom: 11px;
+  section {
+    input {
+      width: 50%;
+      margin-bottom: 11px;
+      border-radius: 11px;
+      padding: 6px;
+      margin-right: 11px;
+    }
   }
+  
 
   button {
-    margin: 22px 0;
+    margin: 33px 0;
+    padding: 11px 44px;
+    border-radius: 30px;
+    background-color: $dark-opac;
+    color: white;
+    border: 3px solid white;
+    &:hover {
+      background-color: white;
+      color: $dark-opac;
+    }
   }
 }
 
@@ -38,10 +55,9 @@ body {
 
 .board {
   padding: 3%;
-  width: 50%;
-  height: 50%;
-  background-color: rgba(124, 59, 6, 0.39);
-  border: 11px solid rgba(63, 29, 2, 0.863);
+  width: 51vw;
+  background-color: $dark-opac;
+  border-radius: 33px;
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-evenly;
@@ -56,9 +72,8 @@ body {
   margin-bottom: 3%;
   
   .box {
-    width: 100%;
-    height: 100%;
-    border: 1px solid white;
+    width: 3vw;
+    height: 3vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,14 +82,14 @@ body {
     font-size: 2.2rem;
 
     &.placed {
-      background-color: green;
+      background-color: $green-custom;
     }
 
     &.misplaced {
-      background-color: orange;
+      background-color: $yellow-custom;
     }
     &.wrong {
-      background-color: red;
+      background-color: $red-custom;
     }
   }
 }
