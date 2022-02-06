@@ -140,11 +140,6 @@ const main = () => {
     initialize();
     document.getElementById('submitButton').addEventListener('click', handleInput );
     document.getElementById('replayButton').addEventListener('click', initialize );
-
-    document.getElementsByTagName('input')[0].addEventListener('keydown', (event) => {
-      if (event.target.value.length >= 8)  event.preventDefault();
-    });
-
   }
 
   game();
