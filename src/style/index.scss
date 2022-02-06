@@ -24,24 +24,29 @@ body {
     padding: 1.5% 0;
     background-color: $dark-opac;
     color: white;
-    font-size: 3em;
+    font-size: 2.5em;
     text-align: center;
   }
   
   main {
-    margin-top: 1.5%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: space-evenly;
     align-items: center;
   }
 }
 
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+}
+
 .input {
-  margin-bottom: 1.5%;
   display: flex;
   padding: 0.5%;
+  margin-bottom: 3%;
   border-radius: 30px;
 
   input {
@@ -64,9 +69,9 @@ body {
 }
 
 .board {
-  padding: 3vh;
+  padding: 6vh;
   background-color: $light-opac;
-  border-radius: 33px;
+  border-radius: 30px;
   display: flex;
   flex-direction: column;
 
@@ -99,7 +104,6 @@ body {
 }
 
 #replayButton {
-  margin-top: 2%;
   background-color: #fab9053d;;
   transition: transform 500ms;
 
