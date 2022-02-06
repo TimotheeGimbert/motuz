@@ -2,8 +2,7 @@ import '../style/index.scss';
 
 const main = () => {
 
-  //const words = ['marmotte', 'potiron', 'citron', 'chaton', 'marmitte', 'parasol', 'balade', 'mousson', 'parquet', 'belgique', 'chausson', 'marbre', 'pizzas', 'beignet', 'bonnet', 'capuche', 'araignee', 'populaire', 'tonneau'];
-  const words = ['potirons', 'potirons'];
+  const words = ['potirons','unitaire','diverger','desordre','arthrose','sourdine','courants','baignade','dauphins','bacterie','bannette','brodeurs','bretelle','nautisme','narcisse','nouveaux','rajuster','rallonge','remorque','usinages','usuriere','zodiaque','emmarger','gendarme','galopade','immature','inconnus','sentiers','sensitif', ];
   let status;
 
   const game = () => {
