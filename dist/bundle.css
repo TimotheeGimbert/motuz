@@ -25,7 +25,11 @@ body {
   margin-bottom: 11px;
 }
 .app button {
-  margin-bottom: 22px;
+  margin: 22px 0;
+}
+
+#resultModal {
+  display: none;
 }
 
 .board {

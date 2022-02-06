@@ -1,20 +1,24 @@
 import '../style/index.scss';
 
-const app = () => {
+const main = () => {
 
+  const words = ['marmotte', 'potiron', 'citron', 'chaton', 'marmitte', 'parasol', 'balade', 'mousson', 'parquet', 'belgique'];
   let wordToFind;
   let maxAttempts;
   let lettersFound;
   let round = 0;
+  let status = 'playing';
 
   const prepareGame = () => {
 
     const generateWord = () => {
-      return 'timothee'.toUpperCase();
+      const randomIndex = Math.floor(Math.random() * words.length);
+      return words[randomIndex].toUpperCase();
     }
 
     const buildBoard = (nbLetters) => {
       const board = document.querySelector('.board');
+      board.innerHTML = '';
       [...Array(maxAttempts)].map( () => board.innerHTML += `<div class="line"></div>` );
       const lines = [...document.querySelectorAll('.line')];
       lines.map( (line) => {
@@ -22,10 +26,12 @@ const app = () => {
       });
     }
 
-    wordToFind = generateWord();                  // calls API to get a random word to find
-    lettersFound = [...Array(wordToFind.length)]; // sets the empty array of letters found by the player
-    maxAttempts = wordToFind.length-1;            // calculates the total possible attempts depending on the length of the word to find
-    buildBoard(wordToFind.length);                // build the adequate numbers of rows and boxes for the board
+    status = 'playing';
+    round = 0;
+    wordToFind = generateWord();                 
+    lettersFound = [...Array(wordToFind.length)];
+    maxAttempts = wordToFind.length-1;           
+    buildBoard(wordToFind.length);               
   }
 
   const game = () => {
@@ -33,13 +39,14 @@ const app = () => {
     const handleInput = () => {
 
       const verifyInput = (input) => {
+        console.log(wordToFind.length);
         const regexpString = `(^([a-z]){${wordToFind.length}}$)`;
         var regex = new RegExp(regexpString, 'i');
         return regex.test(input) ? true : false;
       }
 
       const input = document.querySelector('input').value;
-      verifyInput(input) ? attempt(input.toUpperCase()) : console.log('wrong') ;
+      verifyInput(input) ? attempt(input.toUpperCase()) : console.log('wrong input') ;
     }
 
     const attempt = (guess) => {
@@ -104,13 +111,17 @@ const app = () => {
       }
 
       if (guess === wordToFind) {
-        console.log('winner');
+        status = 'winner';
+        document.getElementById('submitButton').style.display = 'none';
         displayGuess();
+        displayResult(status);
         return;
       }
       else if (round === maxAttempts - 1) {
-        console.log('looser');
+        status = 'looser';
+        document.getElementById('submitButton').style.display = 'none';
         showAnswer();
+        displayResult(status);
         return;
       }
       else {
@@ -119,13 +130,35 @@ const app = () => {
         round ++;
       }
     }
+    
+    const displayResult = (status) => {
+      const modal = document.getElementById('resultModal');
+      if (status === 'winner') {
+        modal.innerHTML = 'BRAVO ! Vous avez gagné !'        
+        modal.style.display = 'flex';
+      }
+      else {
+        modal.innerHTML = 'Dommage c\'est perdu ...'        
+        modal.style.display = 'flex';
+      }
+    }
 
-    const guessButton = document.getElementsByTagName('button')[0];
-    guessButton.addEventListener('click', () => handleInput() );
+    const submitButton = document.getElementById('submitButton');
+    submitButton.removeEventListener('click', handleInput() );
+    submitButton.addEventListener('click', handleInput() );
   }
+
+  const replayButton = document.getElementById('replayButton');
+    replayButton.addEventListener('click', () => {
+    document.getElementById('resultModal').style.display = 'none';
+    document.getElementById('submitButton').style.display = 'flex';
+    prepareGame();
+    game();
+  });
 
   prepareGame();
   game();
 }
 
-app();
+main();
+
