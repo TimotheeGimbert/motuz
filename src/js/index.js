@@ -28,7 +28,7 @@ const main = () => {
           [...Array(nbLetters)].map( () => line.innerHTML += `<div class="box"></div>` );
         });
       }
-
+      document.getElementsByClassName('input')[0].classList.remove('wrongInput');
       document.getElementById('submitButton').style.display = 'flex';
       document.getElementsByTagName('input')[0].value = '';
       wordToFind = generateWord();                 

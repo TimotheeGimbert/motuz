@@ -24,7 +24,7 @@ body {
     padding: 1.5% 0;
     background-color: $dark-opac;
     color: white;
-    font-size: 2.5em;
+    font-size: 2em;
     text-align: center;
   }
   
@@ -71,7 +71,7 @@ body {
 .board {
   padding: 6vh;
   background-color: $light-opac;
-  border-radius: 30px;
+  border-radius: 22px;
   display: flex;
   flex-direction: column;
 
@@ -114,7 +114,7 @@ body {
 }
   
 button {
-  padding: 11px 44px;
+  padding: 6px 44px;
   border-radius: 30px;
   background-color: #2893f04b;
   color: white;
