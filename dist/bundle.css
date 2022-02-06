@@ -115,7 +115,7 @@ button:hover {
   cursor: pointer;
 }
 
-@media all and (max-width: 1300px) {
+@media all and (max-width: 900px) {
   .input {
     margin: 11% 0 6% 0;
   }
@@ -126,7 +126,9 @@ button:hover {
   }
   .board .line .box {
     width: 9vw;
+    max-width: 7vh;
     height: 9vw;
+    max-height: 7vh;
     font-size: 1.4em;
   }
 }
