@@ -34,11 +34,12 @@ body main {
 }
 
 .input {
-  margin-bottom: 3vh;
+  margin: 3vh;
   display: flex;
 }
 .input input {
-  padding: 11px 44px;
+  max-width: 40vw;
+  padding: 0.5vw 2vw;
   border: 3px solid white;
   border-radius: 30px;
   border-top-right-radius: 0;
@@ -95,10 +96,11 @@ button:hover {
 
 @media all and (max-width: 1300px) {
   .board {
-    padding: 3vh;
+    padding: 2vh;
   }
   .board .line .box {
-    width: 6vw;
-    height: 6vw;
+    width: 9vw;
+    height: 9vw;
+    font-size: 1.1rem;
   }
 }

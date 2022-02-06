@@ -37,11 +37,13 @@ body {
 }
 
 .input {
-  margin-bottom: 3vh;
+  margin: 3vh;
   display: flex;
 
   input {
-    padding: 11px 44px;
+    max-width: 40vw;
+
+    padding: 0.5vw 2vw;
     border: 3px solid white;
     border-radius: 30px;
     border-top-right-radius: 0;
@@ -103,13 +105,15 @@ button {
 
 @media all and (max-width: $breakpoint) {
   .board {
-    padding: 3vh;
+    padding: 2vh;
 
     .line {
 
       .box {
-        width: 6vw;
-        height: 6vw;
+        width: 9vw;
+        height: 9vw;
+        font-size: 1.1rem;
+
       }
     }
   }
