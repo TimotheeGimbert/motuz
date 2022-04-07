@@ -1,2 +1,1 @@
-### Découvrir le site en ligne
-[Motuz](https://timotheegimbert.github.io/motuz/)
+[Découvrir Motuz en ligne](https://timotheegimbert.github.io/motuz/)
