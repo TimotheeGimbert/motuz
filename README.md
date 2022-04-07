@@ -1,3 +1,2 @@
-VERSION EN LIGNE :
-
-https://timotheegimbert.github.io/motuz/
+# Découvrir le site en ligne :
+[Motuz](https://timotheegimbert.github.io/motuz/)
