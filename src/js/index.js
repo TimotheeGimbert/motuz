@@ -18,6 +18,12 @@ const main = () => {
         const randomIndex = Math.floor(Math.random() * words.length);
         return words[randomIndex].toUpperCase();
       }
+
+      const displayFirstLetter = () => {
+        const firstBox = document.querySelectorAll('.line')[0].childNodes[0];
+        firstBox.innerHTML = lettersFound[0];
+        firstBox.classList.add('placed');
+      }
   
       const buildBoard = (nbLetters) => {
         const board = document.querySelector('.board');
@@ -36,7 +42,9 @@ const main = () => {
       lettersFound = [...Array(wordToFind.length)];  
       round = 0;
       status = 'playing';       
-      buildBoard(wordToFind.length);   
+      buildBoard(wordToFind.length);
+      lettersFound[0]=wordToFind[0];
+      displayFirstLetter();
     }
 
     const handleInput = () => {
@@ -107,6 +115,7 @@ const main = () => {
 
         colorizeCurrentMisplaced();
         displayNextLine();
+        document.getElementsByTagName('input')[0].value = '';
       }
 
       const showAnswer = () => {

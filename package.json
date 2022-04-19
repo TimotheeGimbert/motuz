@@ -1,22 +1,22 @@
 {
   "name": "motuz",
   "version": "1.0.0",
-  "description": "1) At the root, create index.html and a directory /src containing index.js (/src/style, /src/assets, /src/assets/images, /src/assets/fonts, etc ...)",
+  "description": "",
   "scripts": {
     "build": "webpack --env development --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TimotheeGimbert/WebPack_Starter.git"
+    "url": ""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TimotheeGimbert/WebPack_Starter/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/TimotheeGimbert/WebPack_Starter#readme",
+  "homepage": "",
   "devDependencies": {
     "@babel/core": "^7.16.12",
     "@babel/preset-env": "^7.16.11",

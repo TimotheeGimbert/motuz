@@ -59,7 +59,7 @@ body main {
   border-bottom-left-radius: 0;
 }
 .input.wrongInput {
-  background-color: #e62d43af;
+  background-color: rgba(230, 45, 67, 0.6862745098);
 }
 
 .board {
@@ -85,33 +85,33 @@ body main {
   border-radius: 6px;
 }
 .board .line .box.placed {
-  background-color: #5bc216d5;
+  background-color: rgba(91, 194, 22, 0.8352941176);
 }
 .board .line .box.misplaced {
   background-color: #FAB905;
 }
 .board .line .box.wrong {
-  background-color: #e62d43af;
+  background-color: rgba(230, 45, 67, 0.6862745098);
 }
 
 #replayButton {
-  background-color: #fab9053d;
+  background-color: rgba(250, 185, 5, 0.2392156863);
   transition: transform 500ms;
 }
 #replayButton:hover {
   transform: scale(1.05);
-  background-color: #fab905a9;
+  background-color: rgba(250, 185, 5, 0.662745098);
 }
 
 button {
   padding: 6px 44px;
   border-radius: 30px;
-  background-color: #2893f04b;
+  background-color: rgba(40, 147, 240, 0.2941176471);
   color: white;
   border: 3px solid white;
 }
 button:hover {
-  background-color: #2893f0a1;
+  background-color: rgba(40, 147, 240, 0.631372549);
   cursor: pointer;
 }
 
